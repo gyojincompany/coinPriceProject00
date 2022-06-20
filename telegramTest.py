@@ -1,8 +1,8 @@
 import telegram
 from telegram.ext import Updater, MessageHandler, Filters
 
-token = "5086663851:AAHBTMK-EXP5QaEKaPIJNJ9_o-4zTV74xwE"
-chat_id = "5093226994"
+token = ""
+chat_id = ""
 
 telegram_bot = telegram.Bot(token=token)
 telegram_bot.sendMessage(chat_id=chat_id, text="자동 알람 메시지입니다!")
