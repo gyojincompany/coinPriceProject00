@@ -32,9 +32,14 @@
      <rect>
       <x>87</x>
       <y>7</y>
-      <width>131</width>
+      <width>101</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="coin_price_label">
@@ -66,7 +71,7 @@
      <rect>
       <x>248</x>
       <y>51</y>
-      <width>91</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -88,7 +93,7 @@
    <widget class="QLabel" name="coin_changelate_label">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>360</x>
       <y>50</y>
       <width>71</width>
       <height>31</height>
@@ -139,7 +144,7 @@
      <rect>
       <x>124</x>
       <y>110</y>
-      <width>121</width>
+      <width>131</width>
       <height>16</height>
      </rect>
     </property>
@@ -220,8 +225,8 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>107</y>
+      <x>270</x>
+      <y>109</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -242,7 +247,7 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>270</x>
       <y>129</y>
       <width>81</width>
       <height>16</height>
@@ -264,7 +269,7 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>261</x>
+      <x>271</x>
       <y>149</y>
       <width>71</width>
       <height>16</height>
@@ -286,8 +291,8 @@
    <widget class="QLabel" name="high_price_label">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>106</y>
+      <x>350</x>
+      <y>109</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -299,8 +304,8 @@
    <widget class="QLabel" name="prev_closing_price_label">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>148</y>
+      <x>350</x>
+      <y>149</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -312,8 +317,8 @@
    <widget class="QLabel" name="low_price_label">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>127</y>
+      <x>350</x>
+      <y>129</y>
       <width>91</width>
       <height>20</height>
      </rect>
