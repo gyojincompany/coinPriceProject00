@@ -65,7 +65,7 @@ class MainWindow(QMainWindow, form_class):
         self.setupUi(self)
         self.setWindowTitle("BitCoin Price Overview")
         self.setWindowIcon(QIcon("icons/bitcoin.png"))
-        self.statusBar().showMessage('ver 1.0')
+        self.statusBar().showMessage('ver 1.5')
         self.ticker = ticker
 
         self.cvt = CoinViewThread(ticker) # 코인정보를 가져오는 쓰레드 클래스를 멤버객체로 선언
@@ -107,9 +107,9 @@ class MainWindow(QMainWindow, form_class):
         coin_ticker = self.coin_comboBox.currentText() # 콤보박스에서 선택된 ticker 불러오기
         self.ticker = coin_ticker # 멤버변수인 ticker의 값을 콤보박스에서 선택된 ticker로 변경
         self.coin_ticker_label.setText(coin_ticker) # 콤보박스에서 선택된 ticker로 코인레이블을 셋팅
-        self.alarm_price1.setText('')
-        self.alarm_price2.setText('')
-        self.alarmButton.setText('알람시작')
+        self.alarm_price1.setText('') # 코인종류 변경시 입력된 매도가격 초기화
+        self.alarm_price2.setText('') # 코인종류 변경시 입력된 매수가격 초기화
+        self.alarmButton.setText('알람시작') # 버튼 토글 상태 변경
         self.alarmButton.setStyleSheet('background-color:skyblue;')
         self.cvt.close() # 현재 실행되고 있는 쓰레드를 정지 시킴(while 종료)
         self.cvt = CoinViewThread(coin_ticker)  # 코인정보를 가져오는 쓰레드 클래스를 멤버객체로 선언
@@ -172,25 +172,34 @@ class MainWindow(QMainWindow, form_class):
 
                     if trade_price >= alarm_price1:
                         print("알람울림1")
+                        self.telegram_message(f"{self.ticker}의 현재가격 {trade_price:,.0f}이 알람설정하신 가격인 {alarm_price1}원을 초과하였습니다.")
                         self.alarmFlag = 1
 
                     if trade_price <= alarm_price2:
                         print("알람울림2")
+                        self.telegram_message(f"{self.ticker}의 현재가격 {trade_price:,.0f}이 알람설정하신 가격인 {alarm_price2}원보다 하락하였습니다.")
                         self.alarmFlag = 1
         else:
             pass
+
+    def telegram_message(self, message):
+        telegram_call = TelegramBotClass(self)
+        telegram_call.telegramBot(message)
 
         
         
 
 class TelegramBotClass(QThread):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.parent = parent
 
-        with open("token/telegram_token.txt") as f:
-            lines = f.readline()
-            token = lines[0].strip()
+        # with open("token/telegram_token.txt") as f:
+        #     lines = f.readline()
+        #     token = lines[0].strip()
+        token = "" # 사용자의 텔레그램 토큰 입력
         self.bot = telegram.Bot(token=token)
+        # print(token)
 
     def telegramBot(self, text):
         try:
